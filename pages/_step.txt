@@ -1,0 +1,2 @@
+1. How to use Redux and Redux tool kit in nextjs?
+https://medium.com/nextjs/how-to-use-redux-and-redux-tool-kit-in-nextjs-666a126b9703

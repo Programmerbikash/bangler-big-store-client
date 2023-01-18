@@ -1,0 +1,32 @@
+.image1{
+        background-image: url("/assets/slider1.png");
+        background-color: #cccccc;
+        background-position: center;
+        height: 630px;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+.image2{
+        background-image: url("/assets/slider2.png");
+        background-color: #cccccc;
+        background-position: center;
+        height: 630px;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+.image3{
+        background-image: url("/assets/slider4.png");
+        background-color: #cccccc;
+        background-position: center;
+        height: 630px;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+.image4{
+        background-image: url("/assets/slider3.png");
+        background-color: #cccccc;
+        background-position: center;
+        height: 630px;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
