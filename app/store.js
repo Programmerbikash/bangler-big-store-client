@@ -2,7 +2,7 @@
 import bannerReducer from "../features/banner/BannerSlice";
 import categoryReducer from "../features/category/categorySlice";
 const { configureStore } = require("@reduxjs/toolkit");
-const { default: booksReducer } = require("../pages/books/BookSlice");
+const { default: booksReducer } = require("../features/books/BookSlice");
 
 const store = configureStore({
     reducer: {

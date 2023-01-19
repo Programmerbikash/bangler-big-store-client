@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Head from "next/head";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBanners } from "../../features/banner/BannerSlice";
+import { fetchBanners } from "../banner/BannerSlice";
 
 const EditBook = () => {
   const { isLoading, banners, error } = useSelector((state) => state.banners);
