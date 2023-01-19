@@ -26,16 +26,12 @@ const SignUp = () => {
     })
       .then((response) => response.json())
         .then((data) => {
-        // const user = axios.get("/signIn/jwt", firstName);
         console.log("Success:", data);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
     }
-    // const handleLogOut = async () => {
-    //     const user = await axios.get("/signIn/jwt");
-    // }
     return (
         <div>
             <Navbar />
@@ -92,8 +88,6 @@ const SignUp = () => {
                 </div>
             </div>
         </form>
-        {/* <button onClick={() => handleGetUser()}>User</button>
-        <button onClick={() => handleLogOut()}>Logout</button> */}
     </div>
 </section>
         </div>

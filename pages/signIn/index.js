@@ -1,5 +1,4 @@
 import Navbar from '@/components/Navbar/Navbar';
-import axios from 'axios';
 import Link from 'next/link';
 import React from 'react';
 
@@ -29,10 +28,6 @@ const SignIn = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-    }
-
-    const handleLogOut = async () => {
-        const user = await axios.get("/api/signIn/jwt");
     }
 
     return (
@@ -81,8 +76,6 @@ const SignIn = () => {
                         </Link>
                     </div>
                 </form>
-                <button onClick={() => handleGetUser()}>User</button>
-                <button onClick={() => handleLogOut()}>Logout</button>
             </div>
         </div>
     </div>
