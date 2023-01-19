@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar/Navbar';
+import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 
@@ -34,6 +35,10 @@ const SignUp = () => {
     }
     return (
         <div>
+            <Head>
+                <title>Sign Up Page</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <Navbar />
             <section className="bg-white dark:bg-gray-900">
     <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">

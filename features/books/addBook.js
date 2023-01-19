@@ -35,6 +35,7 @@ const AddBook = () => {
     <div>
       <Head>
         <title>Add Book</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
       <h2 className="text-3xl text-center">Add Books</h2>

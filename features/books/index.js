@@ -28,6 +28,7 @@ const BooksView = () => {
     <div>
       <Head>
         <title>Books View</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
       <h2 className="text-3xl text-center">Books View</h2>
