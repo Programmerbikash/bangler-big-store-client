@@ -3,7 +3,7 @@ import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const fetchBanners = createAsyncThunk("banners/fetchBanners", async () => {
-    const res = await axios.get("https://bangler-big-store.vercel.app/banners");
+    const res = await axios.get("https://bangler-store-server.onrender.com/banners");
     return res.data;
 });
 

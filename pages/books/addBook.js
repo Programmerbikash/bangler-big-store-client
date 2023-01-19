@@ -15,7 +15,7 @@ const AddBook = () => {
       url,
     };
     // console.log(bannerInfo);
-    fetch("https://bangler-big-store.vercel.app/banners", {
+    fetch("https://bangler-store-server.onrender.com/banners", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

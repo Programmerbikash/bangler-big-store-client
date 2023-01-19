@@ -17,7 +17,7 @@ const SignUp = () => {
         password
     };
     console.log(signUpInfo, "info");
-    fetch("https://bangler-big-store.vercel.app/users", {
+    fetch("https://bangler-store-server.onrender.com/users", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -25,13 +25,17 @@ const SignUp = () => {
       body: JSON.stringify(signUpInfo),
     })
       .then((response) => response.json())
-      .then((data) => {
+        .then((data) => {
+        // const user = axios.get("/signIn/jwt", firstName);
         console.log("Success:", data);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
     }
+    // const handleLogOut = async () => {
+    //     const user = await axios.get("/signIn/jwt");
+    // }
     return (
         <div>
             <Navbar />
@@ -45,7 +49,7 @@ const SignUp = () => {
                     </svg>
                 </span>
 
-                <input type="text" name='firstName' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Write your first name"/>
+                <input type="text" required name='firstName' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Write your first name"/>
             </div>
             <div className="relative flex items-center">
                 <span className="absolute">
@@ -54,7 +58,7 @@ const SignUp = () => {
                     </svg>
                 </span>
 
-                <input type="text" name='lastName' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Write your last name"/>
+                <input type="text" required name='lastName' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Write your last name"/>
             </div>
             <div className="relative flex items-center mt-6">
                 <span className="absolute">
@@ -63,7 +67,7 @@ const SignUp = () => {
                     </svg>
                 </span>
 
-                <input type="email" name='email' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
+                <input type="email" required name='email' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
             </div>
 
             <div className="relative flex items-center mt-4">
@@ -73,7 +77,7 @@ const SignUp = () => {
                     </svg>
                 </span>
 
-                <input type="password" name='password' className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
+                <input type="password" required name='password' className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
             </div>
 
             <div className="mt-6">
@@ -88,6 +92,8 @@ const SignUp = () => {
                 </div>
             </div>
         </form>
+        {/* <button onClick={() => handleGetUser()}>User</button>
+        <button onClick={() => handleLogOut()}>Logout</button> */}
     </div>
 </section>
         </div>

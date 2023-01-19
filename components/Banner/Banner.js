@@ -1,4 +1,4 @@
-import { fetchBanners } from "@/pages/banner/BannerSlice";
+import { fetchBanners } from "@/features/banner/BannerSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Slide } from "react-slideshow-image";
@@ -6,7 +6,7 @@ import "react-slideshow-image/dist/styles.css";
 
 const Banner = () => {
   // const books = useSelector(state => state.booksReducer.books);
-  const { isLoading, banners, error } = useSelector((state) => state.banners);
+  const { banners } = useSelector((state) => state.banners);
 
   const dispatch = useDispatch();
 

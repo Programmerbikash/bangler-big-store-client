@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar/Navbar";
 import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Slide } from "react-slideshow-image";
@@ -8,6 +10,11 @@ import AddBook from "./addBook";
 
 const BooksView = () => {
   const books = useSelector((state) => state.booksReducer.books);
+  const router = useRouter();
+
+  const handleInput = () => {
+    router.push("/");
+  }
 
   const divStyle = {
     display: "flex",
@@ -66,6 +73,7 @@ const BooksView = () => {
       <div>
         <AddBook />
       </div>
+      <div className="w-full text-center link text-sky-400"><Link className="text-center font-bold text-3xl" href="" onClick={handleInput}>Back To HomePage</Link></div>
     </div>
   );
 };

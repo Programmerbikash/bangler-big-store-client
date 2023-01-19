@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar/Navbar';
+import axios from 'axios';
 import Link from 'next/link';
 import React from 'react';
 
@@ -14,20 +15,24 @@ const SignIn = () => {
         password
     };
     console.log(loginInfo);
-    // fetch("https://bangler-big-store.vercel.app/banners", {
-    //   method: "POST", // or 'PUT'
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(loginInfo),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Success:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
+    fetch("https://bangler-store-server.onrender.com/signIn", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginInfo),
+    })
+      .then((response) => response.json())
+        .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    }
+
+    const handleLogOut = async () => {
+        const user = await axios.get("/api/signIn/jwt");
     }
 
     return (
@@ -53,7 +58,7 @@ const SignIn = () => {
                             </svg>
                         </span>
 
-                        <input type="email" name='email' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
+                        <input type="email" required name='email' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
                     </div>
 
                     <div className="relative flex items-center mt-4">
@@ -63,7 +68,7 @@ const SignIn = () => {
                             </svg>
                         </span>
 
-                        <input type="password" name='password' className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
+                        <input type="password" required name='password' className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
                     </div>
 
                     <div className="mt-8 md:flex md:items-center">
@@ -76,6 +81,8 @@ const SignIn = () => {
                         </Link>
                     </div>
                 </form>
+                <button onClick={() => handleGetUser()}>User</button>
+                <button onClick={() => handleLogOut()}>Logout</button>
             </div>
         </div>
     </div>
