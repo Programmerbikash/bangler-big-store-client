@@ -1,4 +1,4 @@
-import { fetchCategories, useGetGetAllCategoyQuery } from '@/pages/category/categorySlice';
+import { fetchCategories, useGetGetAllCategoyQuery } from '@/features/category/categorySlice';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
