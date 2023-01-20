@@ -1,16 +1,21 @@
 import Navbar from '@/components/Navbar/Navbar';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const handleSignUp = e => {
     e.preventDefault();
-    const form = e.target;
-    const firstName = form.firstName.value;
-    const lastName = form.lastName.value;
-    const email = form.email.value;
-    const password = form.password.value;
+    // const form = e.target;
+    // const firstName = form.firstName.value;
+    // const lastName = form.lastName.value;
+    // const email = form.email.value;
+    // const password = form.password.value;
     const signUpInfo = {
         firstName,
         lastName,
@@ -27,7 +32,13 @@ const SignUp = () => {
     })
       .then((response) => response.json())
         .then((data) => {
-        console.log("Success:", data);
+            console.log("Success:", data);
+            toast.success('Successfully submitted!')
+            alert('form submitted');
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setPassword("");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -50,7 +61,7 @@ const SignUp = () => {
                     </svg>
                 </span>
 
-                <input type="text" required name='firstName' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Write your first name"/>
+                <input type="text" required name='firstName' value={firstName} onChange={e => setFirstName(e.target.value)} className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Write your first name"/>
             </div>
             <div className="relative flex items-center">
                 <span className="absolute">
@@ -59,7 +70,7 @@ const SignUp = () => {
                     </svg>
                 </span>
 
-                <input type="text" required name='lastName' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Write your last name"/>
+                <input type="text" required name='lastName' value={lastName} onChange={e => setLastName(e.target.value)} className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Write your last name"/>
             </div>
             <div className="relative flex items-center mt-6">
                 <span className="absolute">
@@ -68,7 +79,7 @@ const SignUp = () => {
                     </svg>
                 </span>
 
-                <input type="email" required name='email' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
+                <input type="email" required name='email' value={email} onChange={e => setEmail(e.target.value)} className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
             </div>
 
             <div className="relative flex items-center mt-4">
@@ -78,7 +89,7 @@ const SignUp = () => {
                     </svg>
                 </span>
 
-                <input type="password" required name='password' className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
+                <input type="password" required name='password' value={password} onChange={e => setPassword(e.target.value)} className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
             </div>
 
             <div className="mt-6">
