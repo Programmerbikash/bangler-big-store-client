@@ -1,35 +1,42 @@
-import axios from "axios";
+import { apiSlice } from '@/app/apiSlice';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
-
-export const fetchBanners = createAsyncThunk("banners/fetchBanners", async () => {
-    const res = await axios.get("https://bangler-store-server.onrender.com/banners");
-    return res.data;
-});
-
-const bannerSlice = createSlice({
-    name: 'banners',
-    initialState: {
-        isLoading: false,
-        banners: [],
-        error: null
-    },
-    extraReducers: (builder) => {
-        // action
-        builder.addCase(fetchBanners.pending, (state) => {
-            state.isLoading = true;
-        });
-        builder.addCase(fetchBanners.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.banners = action.payload;
-            state.error = null;
-        });
-        builder.addCase(fetchBanners.rejected, (state, action) => {
-            state.isLoading = false;
-            state.banners = [];
-            state.error = action.error.message;
-        });
-    },
-});
-
-export default bannerSlice.reducer;
+export const bannersApi = apiSlice.injectEndpoints({
+    endpoints: (builder) => ({
+        banners: builder.query({
+            query: () => '/banners',
+            //   keepUnusedDataFor: 5,
+        }),
+        banner: builder.query({
+            query: (id) => `/posts/${id}`,
+        }),
+        addBanner: builder.mutation({
+            query: (banner) => ({
+                url: '/banners',
+                method: 'POST',
+                body: banner
+            }),
+        }),
+        updateBanner: builder.mutation({
+            query: ({ id, ...rest }) => ({
+                url: `/banners/${id}`,
+                method: 'PUT',
+                body: rest
+            }),
+        }),
+        deleteBanner: builder.mutation({
+            query: (id) => ({
+                url: `/banners/${id}`,
+                method: 'DELETE',
+            }),
+        }),
+    }),
+})
+  
+export const {
+    useBannersQuery,
+    useBannerQuery,
+    useAddBannerMutation,
+    useUpdateBannerMutation,
+    useDeleteBannerMutation
+} = bannersApi;

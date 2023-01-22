@@ -3,3 +3,7 @@ https://medium.com/nextjs/how-to-use-redux-and-redux-tool-kit-in-nextjs-666a126b
 
 Live Link: https://bangler-big-boss-programmerbikash.vercel.app/
 Server Link: https://bangler-store-server.onrender.com
+
+Google Search =>
+Node.js and Bcrypt Authentication with MongoDB
+Using bcrypt to hash and compare passwords with Nodejs and MongoDB.

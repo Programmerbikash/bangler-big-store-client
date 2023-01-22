@@ -1,26 +1,22 @@
-import { fetchBanners } from "@/features/banner/BannerSlice";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useAddBannerMutation, useBannersQuery, useDeleteBannerMutation, useUpdateBannerMutation } from "@/features/banner/BannerSlice";
+import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
 const Banner = () => {
-  // const books = useSelector(state => state.booksReducer.books);
-  const { banners } = useSelector((state) => state.banners);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchBanners());
-  }, []);
-  // console.log(books);
+  const { data, error, isLoading, isFetching, isSuccess } = useBannersQuery();
+  console.log(data);
   
+
   return (
     <div>
       <div className="slide-container">
+      {/* {isLoading && <h2>...Loading</h2>} */}
+      {/* {isFetching && <h2>...Fetching</h2>}
+      {error && <h2>Something went wrong</h2>} */}
         <Slide>
-          {banners &&
-            banners.map((banner) => (
+          {data &&
+            data?.map((banner) => (
               <div key={banner._id}>
                 <div className="flex items-center justify-center bg-cover h-[500px]"
                   style={{backgroundImage: `url(${banner.url})` }}
@@ -44,8 +40,52 @@ const Banner = () => {
             ))}
         </Slide>
       </div>
+      <div><AddBanner /></div>
     </div>
   );
 };
+
+export const BannerDetail = ({ id }) => {
+  const { data } = useBannerQuery(id);
+  return (
+    <pre>{JSON.stringify(data, undefined, 2)}</pre>
+  )
+}
+
+export const AddBanner = () => {
+  const [addBanner] = useAddBannerMutation();
+  const [updateBanner] = useUpdateBannerMutation();
+  const [deleteBanner] = useDeleteBannerMutation();
+  // const { refetch } = useContactsQuery();
+  const banner = {
+    "_id": "63c69d515058947820d9ba8b",
+    "title": "Men's Band Collar Slim Fit Formal/Party Waist Coat",
+    "url": "https://i.ibb.co/3cTJnx4/image.png"
+  }
+  const bannerUpdate = {
+    "_id": "63c69d515058947820d9ba8b",
+    "title": "Exclusive & Fashionable Black Suit For Men",
+    "url": "https://i.ibb.co/3cTJnx4/image.png"
+  }
+  const addHandler = async () => {
+    await addBanner(banner);
+    // refetch();
+  }
+  const updateHandler = async () => {
+    await updateBanner(bannerUpdate);
+    // refetch();
+  }
+  const deleteHandler = async () => {
+    await deleteBanner(banner.id);
+    // refetch();
+  }
+  return (
+    <>
+      <button className='bg-orange-400 text-white rounded-xl py-2 px-4 mb-5 font-bold' onClick={addHandler}>Add Contact</button>
+      <button className='bg-orange-400 text-white rounded-xl py-2 px-4 mb-5 font-bold mx-2' onClick={updateHandler}>Update Contact</button>
+      <button className='bg-orange-400 text-white rounded-xl py-2 px-4 mb-5 font-bold' onClick={deleteHandler}>Delete Contact</button>
+    </>
+  )
+}
 
 export default Banner;
